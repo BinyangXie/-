@@ -20,6 +20,7 @@ Son.prototype.constructor = Son;
 
 var son = new Son();
 console.log(son instanceof Son,son instanceof Dad);
+console.log(son.attr);
 son.change(1)
 //
 
