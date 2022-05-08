@@ -1,17 +1,21 @@
-function curry(fn,args){
-    let length = fn.length,
-        args = args || [];
-    return function(){
-        let subArgs = args.slice[0];
+function curry(fn,...args){
+    const length = fn.length;
 
-        for(let i = 0; i < arguments.length; i++){
-            subArgs.push(arguments[i]);
+    return function(...nextArgs){
+        const allArgs = [...args,...nextArgs]
+
+        if(allArgs.length >= length){
+            return fn.call(this,...allArgs);
+        }else{
+            return curry.call(this,fn,...allArgs);
         }
-    
-    if(subArgs.length >= length){
-        return fn.apply(this.subArgs);
-    }else{
-        return curry.call(this.fn,subArgs);
     }
 }
-}
+
+let fn = curry(function(a,b,c){
+    console.log(a+b+c)
+});
+fn();
+fn(1);
+fn(1)(2);
+fn(1)(2)(3);
