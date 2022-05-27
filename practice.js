@@ -335,3 +335,18 @@
 //         }
 //     }
 // }
+
+// const arr = [1, 1, '666', '666', null, null, undefined, undefined, NaN, NaN, {}, {}]
+// Array.prototype.uniq = function() {
+//     let res = [],
+//         map = {};
+//     for(let i of this){
+//         if(!map.hasOwnProperty(i)){
+//             map[i] = 1;
+//             res.push(i);
+//         }
+//     }
+//     return res;
+// }
+
+// console.log(arr.uniq())
