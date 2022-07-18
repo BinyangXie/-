@@ -267,86 +267,40 @@
 // function subBigNumber(a,b){
 //     let res = '',
 //         tmp = 0;
-
 //     a = a.split('');
-//     b = b.split('');
 
-//     while(a.length || b.length || tmp){
-//         tmp += ~~a.pop() + ~~b.pop();
-//         res = (tmp % 10) + res;
-//         tmp = tmp > 9;
-//     }
+// 给你两个二进制字符串，返回它们的和（用二进制表示）。
+// 输入为 非空 字符串且只包含数字 1 和 0。
+// 示例 1:
+// 输入: a = "11", b = "1"
+// 输出: "100"
+// 示例 2:
+// 输入: a = "1010", b = "1011"
+// 输出: "10101"
 
-//     return res.replace(/^0+/,'')
-// }
-
-// function imageAsync(url){
-//     return new Promise(function(resolve,reject){
-//         let img = new Image();
-//         img.src = url;
-//         img.onload = () =>{
-//             resolve(img)
-//         }
-//         img.onerror = () =>{
-//             reject(err);
-//         }
-//     })
-// }
-
-
-// class EventCenter{
-//     constructor(){
-//         this.handlers = {};
-//     }
-
-//     addEventlistener(type,handler){
-//         if(!this.handlers[type]){
-//             this.handlers[type] = [];
-//         }
-//         this.handlers[type].push(handler);
-//     }
-
-//     dispatchEventlistener(type,params){
-//         if(!this.handlers[type]){
-//             return new Error('no type')
-//         }
-//         this.handlers[type].foreach(handler =>{
-//             handler(...params);
-//         })
-//     }
-
-//     removeEventlistener(type,handler){
-//         if(!this.handlers[type]){
-//             return new Error('no type')
-//         }
-//         if(!handler){
-//             delete this.handlers[type];
-//         }else{
-//             const index = this.handlers[type].indexOf(handler);
-//             if(index === -1){
-//                 return new Error('no handler')
-//             }else{
-//                 this.handlers[type].splice(index,1);
-//                 if(this.handlers[type].length === 0){
-//                     delete this.handlers[type];
-//                 }
-//             }
-
-//         }
-//     }
-// }
-
-// const arr = [1, 1, '666', '666', null, null, undefined, undefined, NaN, NaN, {}, {}]
-// Array.prototype.uniq = function() {
+// let strSum= function(str1,str2){
+//     str1 = str1.split('')
+//     str2 = str2.split('')
 //     let res = [],
-//         map = {};
-//     for(let i of this){
-//         if(!map.hasOwnProperty(i)){
-//             map[i] = 1;
-//             res.push(i);
+//         flag = 0;
+//     while(str1.length || str2.length || flag){
+//         let a = str1.pop() || 0,
+//             b = str2.pop() || 0;
+            
+//         let num = parseInt(a) + parseInt(b) + flag;
+        
+//         if(num >= 2){
+//             num -= 2
+//             flag = 1
+//             res.unshift(num)
+
+//         }else{
+//            flag = 0
+//            res.unshift(num)
 //         }
 //     }
-//     return res;
+//     return res.join('')
 // }
-
-// console.log(arr.uniq())
+// console.log(strSum('11','10'))
+// console.log(strSum('11','11'))
+// console.log(strSum('11','111'))
